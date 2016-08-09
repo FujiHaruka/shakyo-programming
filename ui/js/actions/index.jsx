@@ -1,7 +1,15 @@
-import themeColor from './theme_color'
-import code from './code'
+import setThemeColor from './theme_color'
+import setCode from './code'
+import setGamePrepared from './game_prepared'
+import setGameStarted from './game_process'
+import setGameFinished from './game_finished'
+import setGameProcess from './game_process'
 
 export {
-  themeColor,
-  code
+  setThemeColor,
+  setCode,
+  setGamePrepared,
+  setGameStarted,
+  setGameFinished,
+  setGameProcess
 }

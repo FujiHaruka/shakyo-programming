@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import createLogger from 'redux-logger'
 import Reducer from './reducers'
-import {themeColor, code} from './actions'
+import {setThemeColor, setCode} from './actions'
 
 import sampleCode from './sample_codes/sample_1.json'
 
@@ -18,9 +18,9 @@ let store = createStore(
 )
 let color = '#824'
 
-store.dispatch(themeColor({ color: '#824' }))
+store.dispatch(setThemeColor('#824'))
 console.log(sampleCode)
-store.dispatch(code({code: sampleCode}))
+store.dispatch(setCode(sampleCode))
 
 function render () {
   ReactDOM.render(

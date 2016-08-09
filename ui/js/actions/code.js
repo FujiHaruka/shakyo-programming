@@ -1,11 +1,11 @@
 /**
  * Action of code
  */
-const code = ({ code }) => {
+const setCode = (code) => {
   return {
     type: 'SET_CODE',
     code
   }
 }
 
-export default code
+export default setCode
