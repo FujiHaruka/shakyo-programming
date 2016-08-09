@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import hljs from 'highlight.js'
+import giveTags from '../util/give_tags'
 
 let CodeSection = React.createClass({
   propTypes: {
@@ -11,9 +11,9 @@ let CodeSection = React.createClass({
     const s = this
     let { props } = s
     let code = props.code || {}
-    // highlight(name, value, ignore_illegals, continuation)
-    // let highlighted = hljs.highlight(code.language, code.text, true, false)
-    // console.log(highlighted)
+    let html = {
+      __html: giveTags(code)
+    }
     return (
       <section className='code-section'>
         <div className='code-section-language'>
@@ -21,16 +21,12 @@ let CodeSection = React.createClass({
         </div>
         <div className='code-section-body'>
           <pre>
-            <code className={code.language}>
-              {code.text}
+            <code className={code.language} dangerouslySetInnerHTML={html}>
             </code>
           </pre>
         </div>
       </section>
     )
-  },
-  componentDidUpdate () {
-    hljs.initHighlighting()
   }
 })
 
