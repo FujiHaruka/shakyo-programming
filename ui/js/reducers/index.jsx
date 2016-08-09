@@ -6,7 +6,8 @@
  *   code: {
  *     text: 'var hoge = ...',
  *     language: 'javascript',
- *     count: 180
+ *     count: 180,
+ *     keyArray: ['v', 'a', 'r', ...]
  *   },
  *   gamePrepared: true,
  *   gameStarted: true,
