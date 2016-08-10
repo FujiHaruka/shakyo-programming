@@ -1,11 +1,25 @@
 /**
  * Action of setGameProcess
  */
-const setGameProcess = (gameProcess) => {
+import assert from 'assert'
+
+const initGameProcess = ({ keyArray }) => {
+  assert.ok(keyArray)
   return {
-    type: 'SET_STATE',
-    gameProcess
+    type: 'INIT_GAME_PROCESS',
+    keyArray
   }
 }
 
-export default setGameProcess
+const nextGameProcess = ({ keyArray }) => {
+  assert.ok(keyArray)
+  return {
+    type: 'NEXT_KEY',
+    keyArray
+  }
+}
+
+module.exports = {
+  initGameProcess,
+  nextGameProcess
+}

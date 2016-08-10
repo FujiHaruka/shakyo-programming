@@ -6,6 +6,7 @@ import AppStyle from '../containers/app_style'
 import CodeStyle from '../containers/code_style'
 import CodeSection from '../containers/code_section'
 import Header from './header'
+import KeyService from '../containers/key_service'
 
 const App = React.createClass({
   render () {
@@ -15,6 +16,7 @@ const App = React.createClass({
         <CodeStyle />
         <Header/>
         <CodeSection/>
+        <KeyService/>
       </div>
     )
   }

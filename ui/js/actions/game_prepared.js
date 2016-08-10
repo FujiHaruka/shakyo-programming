@@ -1,11 +1,8 @@
 /**
  * Action of setGamePrepared
  */
-const setGamePrepared = (gamePrepared) => {
+export default () => {
   return {
-    type: 'SET_STATE',
-    gamePrepared
+    type: 'GAME_PREPARE'
   }
 }
-
-export default setGamePrepared

@@ -1,15 +1,16 @@
 import setThemeColor from './theme_color'
 import setCode from './code'
-import setGamePrepared from './game_prepared'
-import setGameStarted from './game_process'
+import gamePrepare from './game_prepared'
+import gameStart from './game_started'
 import setGameFinished from './game_finished'
-import setGameProcess from './game_process'
+import {initGameProcess, nextGameProcess} from './game_process'
 
 export {
   setThemeColor,
   setCode,
-  setGamePrepared,
-  setGameStarted,
+  gamePrepare,
+  gameStart,
   setGameFinished,
-  setGameProcess
+  initGameProcess,
+  nextGameProcess
 }

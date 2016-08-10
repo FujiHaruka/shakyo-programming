@@ -33,6 +33,8 @@
     "highlight.js": "^9.5.0",
     "html-parse-stringify2": "^1.2.1",
     "json-loader": "^0.5.4",
+    "keycode": "^2.1.4",
+    "keycoder": "^1.1.1",
     "mocha": "^3.0.0",
     "node-sass": "^3.8.0",
     "postcss-loader": "^0.9.1",

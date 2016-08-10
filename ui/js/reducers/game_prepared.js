@@ -3,8 +3,8 @@
  */
 const gamePrepared = (state = false, action) => {
   switch (action.type) {
-    case 'SET_STATE':
-      return action.gamePrepared
+    case 'GAME_PREPARE':
+      return true
     default:
       return state
   }

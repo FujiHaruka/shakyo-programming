@@ -3,7 +3,7 @@
  */
 const gameFinished = (state = false, action) => {
   switch (action.type) {
-    case 'SET_STATE':
+    case 'GAME_FINISH':
       return action.gameFinished
     default:
       return state

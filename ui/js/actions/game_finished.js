@@ -3,7 +3,7 @@
  */
 const setGameFinished = (gameFinished) => {
   return {
-    type: 'SET_STATE',
+    type: 'GAME_FINISH',
     gameFinished
   }
 }

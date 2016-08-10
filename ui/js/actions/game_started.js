@@ -1,11 +1,8 @@
 /**
  * Action of setGameStarted
  */
-const setGameStarted = (gameStarted) => {
+export default () => {
   return {
-    type: 'SET_STATE',
-    gameStarted
+    type: 'GAME_START'
   }
 }
-
-export default setGameStarted

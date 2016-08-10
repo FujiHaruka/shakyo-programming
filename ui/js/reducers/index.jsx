@@ -23,7 +23,7 @@ import { combineReducers } from 'redux'
 import themeColor from './theme_color'
 import code from './code'
 import gamePrepared from './game_prepared'
-import gameStarted from './game_process'
+import gameStarted from './game_started'
 import gameFinished from './game_finished'
 import gameProcess from './game_process'
 
