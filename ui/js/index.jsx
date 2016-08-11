@@ -22,7 +22,6 @@ store.dispatch(setThemeColor('#824'))
 console.log(sampleCode)
 store.dispatch(setCode(sampleCode))
 store.dispatch(gamePrepare())
-store.dispatch(gameStart())
 let keyArray = store.getState().code.keyArray
 store.dispatch(initGameProcess({ keyArray }))
 

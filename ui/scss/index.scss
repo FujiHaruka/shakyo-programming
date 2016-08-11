@@ -19,3 +19,33 @@
   padding: 0 16px;
   max-width: 800px;
 }
+
+.controller {
+  text-align: center;
+  width: 600px;
+  margin: auto;
+}
+
+.button {
+  border-width: 2px;
+  border-style: solid;
+  padding: 6px 8px;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.button:hover {
+  border-width: 3px;
+}
+
+.button:active {
+  font-weight: 700;
+}
+
+.button-disabled {
+  border: 2px solid #999;
+  color: #999;
+  padding: 6px 8px;
+  font-size: 1.2em;
+  cursor: default;
+}

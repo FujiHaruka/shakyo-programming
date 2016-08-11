@@ -15,15 +15,22 @@ let AppStyle = React.createClass({
     const s = this
     let { props } = s
     let { color } = props
+    let darkColor = Color(color).darken(0.3).hslString()
     let style = `
     .app-theme-color {
-      color: ${color}
+      color: ${color};
     }
     .app-theme-dark-color {
-      color: ${Color(color).darken(0.3).hslString()}
+      color: ${darkColor};
     }
     .app-theme-background-color {
-      background-color: ${color}
+      background-color: ${color};
+    }
+    .app-theme-color-border {
+      border-color: ${color};
+    }
+    .app-theme-dark-color-border {
+      border-color: ${darkColor}
     }
 `
     return (
