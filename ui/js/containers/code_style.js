@@ -10,7 +10,15 @@ const MAX_COUNT = 500
 let shadowCharStyle = (number) => {
   return `
 #code-char-${number} {
-color: #999;
+  color: #999;
+}
+`
+}
+
+let currentPosStyle = (number) => {
+  return `
+#code-char-${number} {
+  border-bottom: 3px solid red;
 }
 `
 }
@@ -40,6 +48,9 @@ let CodeStyle = React.createClass({
             </style>
           )
         })}
+        <style type='text/css'>
+          {currentPosStyle(countPressed + 1)}
+        </style>
       </div>
     )
   }
