@@ -43,7 +43,8 @@ const mergeProps = ({ playing }, { dispatch }) => {
   if (playing && !window.onkeydown) {
     window.onkeydown = (e) => {
       // TODO US キーボードじゃん...
-      console.log(Keycoder.toCharacter(e.keyCode, e.shiftKey))
+      console.log(e)
+      // console.log(Keycoder.toCharacter(e.keyCode, e.shiftKey))
     }
   }
   return {} // 仕様上必要
