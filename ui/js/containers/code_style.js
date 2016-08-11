@@ -34,9 +34,11 @@ let CodeStyle = React.createClass({
     return (
       <div className='code-style'>
         {charStyles.slice(countPressed, countTotal).map((style) => {
-          <style type='text/css' key={style}>
-            {style}
-          </style>
+          return (
+            <style type='text/css' key={style}>
+              {style}
+            </style>
+          )
         })}
       </div>
     )
