@@ -126,9 +126,16 @@
   border-radius: 6px;
   text-align: center;
   color: #666;
-  p {
-    margin: 30px;
-    font-size: 2em;
+  .finish-window-title {
+    border-bottom: 1px solid #999;
+    padding-bottom: 8px;
+    margin: 16px;
+    font-size: 1.4em;
+  }
+  .finish-window-time {
+    margin: 16px;
+    margin-bottom: 26px;
+    font-size: 1.2em;
   }
 }
 

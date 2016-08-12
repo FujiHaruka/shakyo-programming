@@ -15,7 +15,10 @@
  *     nextKey: 'h',
  *     countPressed: 12
  *   },
- *   gameFinishWindow: false
+ *   gameFinishWindow: false,
+ *   gameResult: {
+ *     time: 12.3
+ *   }
  * }
  */
 
@@ -25,13 +28,15 @@ import code from './code'
 import gamePrepared from './game_prepared'
 import gameProcess from './game_process'
 import gameFinishWindow from './game_finish_window'
+import gameResult from './game_result'
 
 const Reducer = combineReducers({
   themeColor,
   code,
   gamePrepared,
   gameProcess,
-  gameFinishWindow
+  gameFinishWindow,
+  gameResult
 })
 
 export default Reducer

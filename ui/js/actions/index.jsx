@@ -3,6 +3,7 @@ import setCode from './code'
 import gamePrepare from './game_prepared'
 import {gameStart, nextGameProcess, gameFinish} from './game_process'
 import {displayGameFinishWindow, hideGameFinishWindow} from './game_finish_window'
+import setGameResult from './game_result'
 
 export {
   setThemeColor,
@@ -12,5 +13,6 @@ export {
   gameFinish,
   nextGameProcess,
   displayGameFinishWindow,
-  hideGameFinishWindow
+  hideGameFinishWindow,
+  setGameResult
 }

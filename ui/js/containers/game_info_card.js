@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {setGameResult} from '../actions'
 
 const Timer = connect(
   (state) => ({playing: state.gameProcess.playing}),
@@ -13,11 +14,16 @@ const Timer = connect(
     return { time: 0 }
   },
 
+  formatTime (time) {
+    let str = String(time)
+    let formated = str.slice(0, str.indexOf('.') + 2)
+    return formated
+  },
+
   render () {
-    let time = String(this.state.time)
     return (
       <span>
-        {time.slice(0, time.indexOf('.') + 2)}
+        {this.formatTime(this.state.time)}
       </span>
     )
   },
@@ -47,7 +53,10 @@ const Timer = connect(
   },
 
   onGameFinished () {
+    const s = this
+    let {dispatch} = s.props
     clearInterval(this._timer)
+    dispatch(setGameResult({ time: s.formatTime(s.state.time) }))
   }
 }))
 

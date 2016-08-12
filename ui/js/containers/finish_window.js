@@ -12,11 +12,12 @@ let FinishWindow = React.createClass({
   render () {
     const s = this
     let {props} = s
-    let {display, close} = props
+    let {display, close, gameResult} = props
     return (
       <div className={classnames('finish-window-background', display ? '' : 'hidden')}>
         <div className='finish-window'>
-          <p>Clear !</p>
+          <p className='finish-window-title app-theme-color'>クリア !</p>
+          <p className='finish-window-time'>タイム: {gameResult.time} 秒</p>
           <span className='button app-theme-color' onClick={close}>閉じる</span>
         </div>
       </div>
@@ -26,7 +27,8 @@ let FinishWindow = React.createClass({
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    display: state.gameFinishWindow
+    display: state.gameFinishWindow,
+    gameResult: state.gameResult
   }
 }
 
