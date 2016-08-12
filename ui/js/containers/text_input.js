@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import { nextGameProcess, gameFinish } from '../actions'
+import { nextGameProcess, gameFinish, displayGameFinishWindow } from '../actions'
 
 let TextInput = React.createClass({
   propTypes: {
@@ -36,15 +36,15 @@ let TextInput = React.createClass({
     const s = this
     let char = e.currentTarget.value
     e.currentTarget.value = ''
-    // 判定
+    // TODO ここでゲームの終了処理をしているのはキモい
     let {nextKey, keyArray, dispatch, countPressed} = this.props
     if (char === nextKey) {
       dispatch(nextGameProcess({ keyArray }))
       if (countPressed + 1 === keyArray.length) {
         setTimeout(() => {
-          window.alert('Finish')
           document.removeEventListener('click', s._focus)
           s._input.blur()
+          dispatch(displayGameFinishWindow())
           dispatch(gameFinish())
         }, 100)
       }

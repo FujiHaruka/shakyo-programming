@@ -9,6 +9,7 @@ import Controller from './controller'
 import GameInfoCard from '../containers/game_info_card'
 import Header from './header'
 import TextInput from '../containers/text_input'
+import FinishWindow from '../containers/finish_window'
 
 const App = React.createClass({
   render () {
@@ -21,6 +22,7 @@ const App = React.createClass({
         <TextInput/>
         <Controller/>
         <GameInfoCard/>
+        <FinishWindow/>
       </div>
     )
   }
