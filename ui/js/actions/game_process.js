@@ -3,10 +3,10 @@
  */
 import assert from 'assert'
 
-const initGameProcess = ({ keyArray }) => {
+const gameStart = ({ keyArray }) => {
   assert.ok(keyArray)
   return {
-    type: 'INIT_GAME_PROCESS',
+    type: 'GAME_START',
     keyArray
   }
 }
@@ -19,7 +19,14 @@ const nextGameProcess = ({ keyArray }) => {
   }
 }
 
+const gameFinish = () => {
+  return {
+    type: 'GAME_FINISH'
+  }
+}
+
 module.exports = {
-  initGameProcess,
-  nextGameProcess
+  gameStart,
+  nextGameProcess,
+  gameFinish
 }

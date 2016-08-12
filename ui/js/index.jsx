@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import createLogger from 'redux-logger'
 import Reducer from './reducers'
-import {setThemeColor, setCode, gamePrepare, gameStart, initGameProcess} from './actions'
+import {setThemeColor, setCode, gamePrepare} from './actions'
 
 import sampleCode from './sample_codes/sample_1.json'
 
@@ -22,8 +22,6 @@ store.dispatch(setThemeColor('#824'))
 console.log(sampleCode)
 store.dispatch(setCode(sampleCode))
 store.dispatch(gamePrepare())
-let keyArray = store.getState().code.keyArray
-store.dispatch(initGameProcess({ keyArray }))
 
 function render () {
   ReactDOM.render(

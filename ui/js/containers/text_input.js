@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import { nextGameProcess } from '../actions'
+import { nextGameProcess, gameFinish } from '../actions'
 
 let TextInput = React.createClass({
   // debug 用の state
@@ -10,13 +10,19 @@ let TextInput = React.createClass({
     }
   },
   render () {
+    const s = this
     return (
       <div>
         <textarea
           className='text-input'
           cols='2'
           rows='1'
-          ref={(input) => { if (input !== null) input.focus() }}
+          ref={(input) => {
+            if (input !== null) {
+              input.focus()
+              s._input = input
+            }
+          }}
           onInput={this.onInput}
         ></textarea>
         {this.state.text}
@@ -25,13 +31,20 @@ let TextInput = React.createClass({
   },
 
   onInput (e) {
+    const s = this
     let char = e.currentTarget.value
     e.currentTarget.value = ''
     // 判定
-    let {nextKey, keyArray, dispatch} = this.props
-    console.log('next: ', nextKey)
+    let {nextKey, keyArray, dispatch, countPressed} = this.props
     if (char === nextKey) {
       dispatch(nextGameProcess({ keyArray }))
+      if (countPressed + 1 === keyArray.length) {
+        setTimeout(() => {
+          window.alert('Finish')
+          s._input.blur()
+          dispatch(gameFinish())
+        }, 100)
+      }
     }
   }
 })
@@ -39,7 +52,8 @@ let TextInput = React.createClass({
 const mapStateToProps = (state) => {
   return {
     nextKey: state.gameProcess.nextKey,
-    keyArray: state.code.keyArray
+    keyArray: state.code.keyArray,
+    countPressed: state.gameProcess.countPressed
   }
 }
 

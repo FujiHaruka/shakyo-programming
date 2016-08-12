@@ -31,35 +31,41 @@ let CodeStyle = React.createClass({
 
   getDefaultProps () {
     return {
-      charStyles: (new Array(MAX_COUNT)).fill(0).map((v, i) => shadowCharStyle(i + 1))
+      charStyles: (new Array(MAX_COUNT)).fill(0).map((v, i) => shadowCharStyle(i + 1)),
+      playing: false
     }
   },
 
   render () {
     const s = this
-    let {charStyles, countTotal, countPressed} = s.props
-    // TODO パフォーマンス改善
-    return (
-      <div className='code-style'>
-        {charStyles.slice(countPressed, countTotal).map((style) => {
-          return (
-            <style type='text/css' key={style}>
-              {style}
-            </style>
-          )
-        })}
-        <style type='text/css'>
-          {currentPosStyle(countPressed + 1)}
-        </style>
-      </div>
-    )
+    let {charStyles, countTotal, countPressed, playing} = s.props
+    if (playing) {
+      // TODO パフォーマンス改善
+      return (
+        <div className='code-style'>
+          {charStyles.slice(countPressed, countTotal).map((style) => {
+            return (
+              <style type='text/css' key={style}>
+                {style}
+              </style>
+            )
+          })}
+          <style type='text/css'>
+            {currentPosStyle(countPressed + 1)}
+          </style>
+        </div>
+      )
+    } else {
+      return (<div className='code-style'></div>)
+    }
   }
 })
 
 const mapStateToProps = (state, ownProps) => {
   return {
     countTotal: state.code.count || 0,
-    countPressed: state.gameProcess.countPressed || 0
+    countPressed: state.gameProcess.countPressed || 0,
+    playing: state.gameProcess.playing || false
   }
 }
 

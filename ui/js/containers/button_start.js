@@ -6,11 +6,11 @@ import {gameStart} from '../actions'
 let ButtonStart = React.createClass({
   getDefaultProps () {
     return {
-      gameStarted: false
+      playing: false
     }
   },
   render () {
-    let disabled = this.props.gameStarted
+    let disabled = this.props.playing
     return (
       <span
         className={
@@ -24,9 +24,9 @@ let ButtonStart = React.createClass({
     )
   },
   onClick () {
-    let { gamePrepared, dispatch } = this.props
+    let { gamePrepared, dispatch, keyArray } = this.props
     if (gamePrepared) {
-      dispatch(gameStart())
+      dispatch(gameStart({ keyArray }))
     }
   }
 })
@@ -34,7 +34,8 @@ let ButtonStart = React.createClass({
 const mapStateToProps = (state) => {
   return {
     gamePrepared: state.gamePrepared,
-    gameStarted: state.gameStarted
+    playing: state.gameProcess.playing,
+    keyArray: state.code.keyArray
   }
 }
 
