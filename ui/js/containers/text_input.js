@@ -3,11 +3,12 @@ import {connect} from 'react-redux'
 import { nextGameProcess, gameFinish } from '../actions'
 
 let TextInput = React.createClass({
-  // debug 用の state
-  getInitialState () {
-    return {
-      text: ''
-    }
+  propTypes: {
+    playing: React.PropTypes.bool,
+    nextKey: React.PropTypes.string,
+    dispatch: React.PropTypes.func,
+    keyArray: React.PropTypes.array,
+    countPressed: React.PropTypes.number
   },
   render () {
     const s = this
@@ -17,17 +18,18 @@ let TextInput = React.createClass({
           className='text-input'
           cols='2'
           rows='1'
-          ref={(input) => {
-            if (input !== null) {
-              input.focus()
-              s._input = input
-            }
-          }}
-          onInput={this.onInput}
+          ref={(input) => { s._input = input }}
+          onInput={s.onInput}
         ></textarea>
-        {this.state.text}
       </div>
     )
+  },
+
+  componentWillUpdate (nextProps) {
+    let gameStarted = this.props.playing === false && nextProps.playing === true
+    if (gameStarted) {
+      this.onGameStart()
+    }
   },
 
   onInput (e) {
@@ -41,19 +43,32 @@ let TextInput = React.createClass({
       if (countPressed + 1 === keyArray.length) {
         setTimeout(() => {
           window.alert('Finish')
+          document.removeEventListener('click', s._focus)
           s._input.blur()
           dispatch(gameFinish())
         }, 100)
       }
     }
+  },
+
+  onGameStart () {
+    console.log('Game Start')
+    const s = this
+    s._focus()
+    document.addEventListener('click', s._focus)
+  },
+
+  _focus () {
+    this._input.focus()
   }
 })
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
     nextKey: state.gameProcess.nextKey,
     keyArray: state.code.keyArray,
-    countPressed: state.gameProcess.countPressed
+    countPressed: state.gameProcess.countPressed,
+    playing: state.gameProcess.playing
   }
 }
 

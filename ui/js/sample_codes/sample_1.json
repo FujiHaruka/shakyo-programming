@@ -1,4 +1,4 @@
 {
-  "text": "function add (n, m) {\n  return n + m\n}\nlet x = add(3, 5)\nconsole.log(x)\n",
+  "text": "function add (n, m) {\n  return n + m\n}",
   "language": "javascript"
 }
