@@ -8,16 +8,30 @@
 }
 
 .code-section {
-  margin: 16px;
+  position: relative;
+  margin: auto;
+  margin-bottom: 24px;
+  padding: 8px;
+  max-width: 800px;
+}
+
+.code-section-language {
+  font-size: 0.7em;
+  position: absolute;
+  right: 9px;
+  text-align: right;
+  margin: 0;
+  padding: 5px;
+  background: #eee;
+  border-left: 1px solid #bbb;
+  border-bottom: 1px solid #bbb;
 }
 
 .code-section-body {
-  margin: auto;
   margin-top: 6px;
   font-size: 1.5em;
   border: 1px solid #bbb;
   padding: 0 16px;
-  max-width: 800px;
 }
 
 .controller {

@@ -16,10 +16,10 @@ let CodeSection = React.createClass({
     }
     return (
       <section className='code-section'>
-        <div className='code-section-language'>
-          {code.language}
-        </div>
         <div className='code-section-body'>
+          <div className='code-section-language'>
+          {code.language}
+          </div>
           <pre>
             <code className={code.language} dangerouslySetInnerHTML={html}>
             </code>
