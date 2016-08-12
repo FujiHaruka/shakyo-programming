@@ -88,7 +88,7 @@ const GameInfoCard = React.createClass({
   render () {
     return (
       <div className='game-info-card'>
-        <div className='title app-theme-dark-color'>Let's 写経！</div>
+        <div className='title app-theme-dark-color'>写経ザ・プログラム</div>
         <table>
           <tbody>
             <tr>
