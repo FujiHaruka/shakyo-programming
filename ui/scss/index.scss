@@ -146,3 +146,32 @@
 .visible {
   visibility: visible;
 }
+
+// Import section
+
+.import-section {
+  margin: auto;
+  max-width: 600px;
+  padding: 8px;
+  .import-section-title {
+    border-bottom: 1px solid #999;
+    padding-bottom: 8px;
+  }
+  .import-url-form {
+    position: relative;
+  }
+  .import-url-form-input-area {
+    font-size: 1.2em;
+  }
+  .import-url-form-input {
+    height: 1em;
+    width: 70%;
+    border: 2px solid #ccc;
+    color: #666;
+    font-size: 1em;
+  }
+  .button {
+    font-size: 1em;
+    float: right;
+  }
+}

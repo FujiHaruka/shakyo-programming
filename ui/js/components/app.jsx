@@ -8,6 +8,7 @@ import CodeSection from '../containers/code_section'
 import Controller from './controller'
 import GameInfoCard from '../containers/game_info_card'
 import Header from './header'
+import ImportSection from './import_section'
 import TextInput from '../containers/text_input'
 import FinishWindow from '../containers/finish_window'
 
@@ -21,6 +22,7 @@ const App = React.createClass({
         <CodeSection/>
         <TextInput/>
         <Controller/>
+        <ImportSection/>
         <GameInfoCard/>
         <FinishWindow/>
       </div>
