@@ -49,3 +49,40 @@
   font-size: 1.2em;
   cursor: default;
 }
+
+.text-input {
+  position: absolute;
+  left: -300px;
+}
+
+.game-info-card {
+  position: absolute;
+  bottom: 30px;
+  right: 16px;
+  border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 12px;
+  box-shadow: 3px 4px 6px #aaa;
+  width: 140px;
+
+  .title {
+    border-bottom: 1px solid #999;
+    text-align: center;
+    padding-top: 4px;
+    padding-bottom: 6px;
+  }
+
+  table {
+    margin-top: 4px;
+    width: 100%;
+  }
+
+  td {
+    padding: 4px 0;
+  }
+
+  .right {
+    padding-left: 4px;
+    text-align: right;
+  }
+}

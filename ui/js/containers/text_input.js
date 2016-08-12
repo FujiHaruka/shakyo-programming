@@ -16,7 +16,7 @@ let TextInput = React.createClass({
       <div>
         <textarea
           className='text-input'
-          cols='2'
+          cols='1'
           rows='1'
           ref={(input) => { s._input = input }}
           onInput={s.onInput}
