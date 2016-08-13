@@ -1,16 +1,18 @@
-import calcCodeInfo from '../util/calc_code_info'
+import giveTags from '../util/give_tags'
 
 /**
  * Action of code
  */
-const setCode = ({text, language}) => {
-  let {count, keyArray} = calcCodeInfo(text)
+const setCode = (code) => {
+  let {text, language} = code
+  let { html, keyArray } = giveTags(code)
   return {
     type: 'SET_CODE',
     code: {
       text,
+      html,
       language,
-      count,
+      count: keyArray.length,
       keyArray
     }
   }

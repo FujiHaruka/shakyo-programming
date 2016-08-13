@@ -1,6 +1,5 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import giveTags from '../util/give_tags'
 
 let CodeSection = React.createClass({
   propTypes: {
@@ -12,7 +11,7 @@ let CodeSection = React.createClass({
     let { props } = s
     let code = props.code || {}
     let html = {
-      __html: giveTags(code)
+      __html: code.html
     }
     return (
       <section className='code-section'>

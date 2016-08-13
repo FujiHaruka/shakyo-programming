@@ -4,7 +4,6 @@ const HTML = require('html-parse-stringify2')
 // TODO escape をどうするか
 /**
  * @param {object} code
- * @return {string} htmlString
  */
 function giveTags (code) {
   if (!code.language || !code.text) {
@@ -24,6 +23,7 @@ function giveTags (code) {
   let ast = HTML.parse(fHighlighten)
 
   // 再帰的に書き換えるやつ
+  let keyArray = []
   let spanId = 1
   let rewrite = (content) => {
     let split = content.split('')
@@ -36,9 +36,15 @@ function giveTags (code) {
           returnFlag = true
           return char
         case ' ':
-          return returnFlag ? char : tag(char)
+          if (returnFlag) {
+            return char
+          } else {
+            keyArray.push(' ')
+            return tag(char)
+          }
         default:
           returnFlag = false
+          keyArray.push(char)
           return tag(char)
       }
     })
@@ -54,6 +60,12 @@ function giveTags (code) {
             .replace(/{#space#}/g, ' ')
             .replace(/{#newline#}/g, '\n')
         )
+      } else if (node.type === 'tag' && node.attrs.class === 'hljs-comment') {
+        // コメントは無視
+        let textNode = node.children[0]
+        textNode.content = textNode.content
+          .replace(/{#space#}/g, ' ')
+          .replace(/{#newline#}/g, '\n')
       } else {
         dfsAddSpan(node.children)
       }
@@ -62,7 +74,10 @@ function giveTags (code) {
 
   dfsAddSpan(ast)
   let htmlString = HTML.stringify(ast)
-  return htmlString
+  return {
+    html: htmlString,
+    keyArray
+  }
 }
 
 module.exports = giveTags
