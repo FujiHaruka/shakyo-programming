@@ -4,9 +4,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-// TODO ここで最大文字数をカウントするのは不自然
-const MAX_COUNT = 500
-
 let shadowCharStyle = (number) => {
   return `
 #code-char-${number} {
@@ -43,14 +40,20 @@ let CodeStyle = React.createClass({
 
   getDefaultProps () {
     return {
-      charStyles: (new Array(MAX_COUNT)).fill(0).map((v, i) => shadowCharStyle(i + 1)),
       playing: false
+    }
+  },
+
+  getInitialState () {
+    return {
+      charStyles: (new Array(this.props.countTotal)).fill(0).map((v, i) => shadowCharStyle(i + 1))
     }
   },
 
   render () {
     const s = this
-    let {charStyles, countTotal, countPressed, playing} = s.props
+    let {countTotal, countPressed, playing} = s.props
+    let {charStyles} = s.state
     let curId = currentId(countPressed + 1)
     // 高さ
     let curElement = document.getElementById(curId)
@@ -80,6 +83,14 @@ let CodeStyle = React.createClass({
       )
     } else {
       return (<div className='code-style'></div>)
+    }
+  },
+
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.countTotal !== this.props.countTotal) {
+      this.setState({
+        charStyles: (new Array(nextProps.countTotal)).fill(0).map((v, i) => shadowCharStyle(i + 1))
+      })
     }
   }
 })
