@@ -24,8 +24,7 @@ let ImportUrlForm = React.createClass({
     const s = this
     let ok = s.validate()
     if (ok) {
-      // let url = s._input.value
-      let url = 'https://raw.githubusercontent.com/fonnesbeck/scipy2014_tutorial/master/examples/bioassay.py'
+      let url = s._input.value
       request(url, (err, res, body) => {
         if (err) {
           window.alert('データを取得できませんでした。')

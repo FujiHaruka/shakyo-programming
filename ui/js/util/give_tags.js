@@ -13,20 +13,22 @@ function giveTags (code) {
   let highlighten = hljs.highlight(code.language, code.text, true, false).value
 
   // html-parse-stringify2 ではスペースが無視されるので
-  let fHighlighten = highlighten.replace(/(span>)([ ]+)(<span)/g, (m, p1, p2, p3) => {
-    let spaces = p2.split('').map(() => '{#space#}').join('')
-    return p1 + spaces + p3
-  })
+  let fHighlighten = highlighten
+    .replace(/(span>)([ ]+)(<span)/g, (m, p1, p2, p3) => {
+      let spaces = p2.split('').map(() => '{#space#}').join('')
+      return p1 + spaces + p3
+    })
+    .replace(/\n/g, '{#newline#}')
 
   // Use html-parse-stringify2
   let ast = HTML.parse(fHighlighten)
 
   // 再帰的に書き換えるやつ
-  let spanCounter = 1
+  let spanId = 1
   let rewrite = (content) => {
     let split = content.split('')
     let returnFlag = false // 改行後のスペースにタグ付与しないためのフラグ
-    let tag = (char) => `<span id="code-char-${spanCounter++}">${char}</span>`
+    let tag = (char) => `<span id="code-char-${spanId++}">${char}</span>`
     let rewritten = split.map((char) => {
       switch (char) {
         case '\n':
@@ -47,8 +49,11 @@ function giveTags (code) {
     ast.forEach(node => {
       if (node.type === 'text') {
         let {content} = node
-        // ここで {#space#}を書き換える
-        node.content = rewrite(content.replace(/{#space#}/g, ' '))
+        node.content = rewrite(
+          content
+            .replace(/{#space#}/g, ' ')
+            .replace(/{#newline#}/g, '\n')
+        )
       } else {
         dfsAddSpan(node.children)
       }
