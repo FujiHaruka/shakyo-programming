@@ -70,7 +70,9 @@
 }
 
 .game-info-card {
-  position: absolute;
+  position: fixed;
+  z-index: 10;
+  background: white;
   bottom: 30px;
   right: 16px;
   border: 1px solid #ccc;
