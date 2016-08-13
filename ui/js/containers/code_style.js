@@ -15,10 +15,22 @@ let shadowCharStyle = (number) => {
 `
 }
 
-let currentPosStyle = (number) => {
+let currentId = (number) => {
+  return `code-char-${number}`
+}
+
+let currentPosStyle = (curId) => {
   return `
-#code-char-${number} {
+#${curId} {
   border-bottom: 3px solid red;
+}
+`
+}
+
+let textInputStyle = (y) => {
+  return `
+.text-input {
+  top: ${y}px;
 }
 `
 }
@@ -39,6 +51,14 @@ let CodeStyle = React.createClass({
   render () {
     const s = this
     let {charStyles, countTotal, countPressed, playing} = s.props
+    let curId = currentId(countPressed + 1)
+    // 高さ
+    let curElement = document.getElementById(curId)
+    if (!curElement) {
+      console.log('id not found')
+      return (<div></div>)
+    }
+    let curElementY = curElement.getBoundingClientRect().top + window.pageYOffset
     if (playing) {
       // TODO パフォーマンス改善
       return (
@@ -51,7 +71,10 @@ let CodeStyle = React.createClass({
             )
           })}
           <style type='text/css'>
-            {currentPosStyle(countPressed + 1)}
+            {currentPosStyle(curId)}
+          </style>
+          <style type='text/css'>
+            {textInputStyle(curElementY)}
           </style>
         </div>
       )

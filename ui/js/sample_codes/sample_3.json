@@ -1,0 +1,5 @@
+{
+  "text": "let a = 1\nlet b = 2",
+  "language": "js",
+  "issue": "改行消失問題"
+}
