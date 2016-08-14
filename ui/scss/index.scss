@@ -159,6 +159,7 @@ pre {
 
 .import-section {
   margin: auto;
+  margin-bottom: 80px;
   max-width: 600px;
   padding: 8px;
   .import-section-title {
@@ -181,5 +182,6 @@ pre {
   .button {
     font-size: 1em;
     float: right;
+    transform: translateY(-5px);
   }
 }
