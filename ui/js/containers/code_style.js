@@ -1,5 +1,6 @@
 /**
  * Style of the Code
+ * パフォーマンスのため event を使っている。
  */
 import React from 'react'
 import {connect} from 'react-redux'
@@ -32,10 +33,90 @@ let textInputStyle = (y) => {
 `
 }
 
+let charStyleId = (number) => `code-char-style-${number}`
+
+const CodeCharStyle = React.createClass({
+  propTypes: {
+    idNumber: React.PropTypes.number
+  },
+  getInitialState () {
+    return {
+      highlightOff: true
+    }
+  },
+  render () {
+    const s = this
+    let {highlightOff} = s.state
+    let {idNumber} = s.props
+    if (highlightOff) {
+      return (
+        <style type='text/css' id={charStyleId(idNumber)}>
+          {shadowCharStyle(idNumber)}
+        </style>
+      )
+    } else {
+      return (
+        <style type='text/css' id={charStyleId(idNumber)}></style>
+      )
+    }
+  },
+  handleHighlightOn () {
+    this.setState({ highlightOff: false })
+  },
+  componentDidMount () {
+    let {idNumber} = this.props
+    document.getElementById(charStyleId(idNumber)).addEventListener('highlightOn', this.handleHighlightOn)
+  },
+  componentWillUnmount () {
+    let {idNumber} = this.props
+    document.getElementById(charStyleId(idNumber)).removeEventListener('highlightOn', this.handleHighlightOn)
+  }
+})
+
+const CurrentPosStyle = connect((state) => {
+  return {
+    countPressed: state.gameProcess.countPressed
+  }
+})(React.createClass({
+  propTypes: {
+    countPressed: React.PropTypes.number
+  },
+  render () {
+    let {countPressed} = this.props
+    let curId = currentId(countPressed + 1)
+    let curElement = document.getElementById(curId)
+    if (!curElement) { // ゲーム終了時
+      return <style></style>
+    }
+    let curElementY = curElement.getBoundingClientRect().top + window.pageYOffset
+    return (
+      <style type='text/css'>
+        {currentPosStyle(curId)}
+        {textInputStyle(curElementY)}
+      </style>
+    )
+  },
+  shouldComponentUpdate (nextProps) {
+    return nextProps.countPressed !== this.props.countPressed
+  },
+  // FIXME なぜかここで CodeCharStyle の更新を行っている
+  componentDidUpdate () {
+    let {countPressed} = this.props
+    let id = charStyleId(countPressed)
+    let codeCharStyle = document.getElementById(id)
+    if (!codeCharStyle) {
+      throw new Error(`Not found ${id}`)
+    }
+    let event = new window.Event('highlightOn')
+    codeCharStyle.dispatchEvent(event)
+  }
+}))
+
 let CodeStyle = React.createClass({
   propTypes: {
     countTotal: React.PropTypes.number,
-    countPressed: React.PropTypes.number
+    playing: React.PropTypes.bool,
+    store: React.PropTypes.object
   },
 
   getDefaultProps () {
@@ -44,41 +125,18 @@ let CodeStyle = React.createClass({
     }
   },
 
-  getInitialState () {
-    return {
-      charStyles: (new Array(this.props.countTotal)).fill(0).map((v, i) => shadowCharStyle(i + 1))
-    }
-  },
-
   render () {
+    console.log('CodeStyle render')
     const s = this
-    let {countTotal, countPressed, playing} = s.props
-    let {charStyles} = s.state
-    let curId = currentId(countPressed + 1)
-    // 高さ
-    let curElement = document.getElementById(curId)
-    if (!curElement) {
-      console.log('id not found')
-      return (<div></div>)
-    }
-    let curElementY = curElement.getBoundingClientRect().top + window.pageYOffset
+    let {countTotal, playing} = s.props
     if (playing) {
-      // TODO パフォーマンス改善
+      let idNumbers = (new Array(countTotal)).fill(1).map((v, i) => i + v)
       return (
         <div className='code-style'>
-          {charStyles.slice(countPressed, countTotal).map((style) => {
-            return (
-              <style type='text/css' key={style}>
-                {style}
-              </style>
-            )
-          })}
-          <style type='text/css'>
-            {currentPosStyle(curId)}
-          </style>
-          <style type='text/css'>
-            {textInputStyle(curElementY)}
-          </style>
+          {idNumbers.map((idNumber) =>
+              <CodeCharStyle idNumber={idNumber} key={idNumber}/>
+          )}
+          <CurrentPosStyle />
         </div>
       )
     } else {
@@ -86,11 +144,12 @@ let CodeStyle = React.createClass({
     }
   },
 
-  componentWillReceiveProps (nextProps) {
-    if (nextProps.countTotal !== this.props.countTotal) {
-      this.setState({
-        charStyles: (new Array(nextProps.countTotal)).fill(0).map((v, i) => shadowCharStyle(i + 1))
-      })
+  shouldComponentUpdate (nextProps) {
+    if (this.props.playing !== nextProps.playing ||
+        this.props.countTotal !== nextProps.countTotal) {
+      return true
+    } else {
+      return false
     }
   }
 })
@@ -98,7 +157,6 @@ let CodeStyle = React.createClass({
 const mapStateToProps = (state, ownProps) => {
   return {
     countTotal: state.code.count || 0,
-    countPressed: state.gameProcess.countPressed || 0,
     playing: state.gameProcess.playing || false
   }
 }

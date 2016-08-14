@@ -13,8 +13,8 @@ const rootEl = document.getElementById('site')
 const logger = createLogger()
 
 let store = createStore(
-  Reducer
-  // applyMiddleware(logger)
+  Reducer,
+  applyMiddleware(logger)
 )
 let color = '#824'
 
