@@ -155,20 +155,30 @@ pre {
   visibility: visible;
 }
 
-// Import section
-
-.import-section {
+.section {
   margin: auto;
-  margin-bottom: 80px;
   max-width: 600px;
   padding: 8px;
-  .import-section-title {
-    border-bottom: 1px solid #999;
-    padding-bottom: 8px;
+}
+
+.section-title {
+  border-bottom: 1px solid #999;
+  padding-bottom: 8px;
+}
+
+// description section
+
+.description-section-body {
+  li {
+    margin: 10px 0;
   }
-  .import-url-form {
-    position: relative;
-  }
+}
+
+// Import section
+
+.import-url-form {
+  position: relative;
+  margin-bottom: 80px;
   .import-url-form-input-area {
     font-size: 1.2em;
   }
