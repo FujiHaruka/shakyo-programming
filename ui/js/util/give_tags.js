@@ -11,8 +11,7 @@ function giveTags (code) {
   if (!code.language || !code.text) {
     return ''
   }
-  let highlighten = hljs.highlight(code.language, code.text, true, false).value
-  console.log(highlighten)
+  let highlighten = '<span>' + hljs.highlight(code.language, code.text, true, false).value + '</span>'
 
   // html-parse-stringify2 ではスペースが無視されるので
   let fHighlighten = highlighten

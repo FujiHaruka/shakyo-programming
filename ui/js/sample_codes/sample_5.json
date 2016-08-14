@@ -1,4 +1,4 @@
 {
-  "text": "\n/**\n * this is comment.\n */\n  let a = 100 < 10\n// this is comment.\n",
+  "text": "/**\n * this is comment.\n */\n  let a = 100 < 10\n// this is comment.\n",
   "language": "js"
 }
