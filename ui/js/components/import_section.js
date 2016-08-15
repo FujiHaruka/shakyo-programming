@@ -16,11 +16,14 @@ const ImportSection = React.createClass({
               Github などでコードを探して写経しましょう。
             </li>
             <li>
-              Raw なコードの URL を入力してください。<br/>
+              Raw なソースコードの URL を入力してください。<br/>
               たとえば、 "https://raw.githubusercontent.com/FujiHaruka/shakyo-programming/master/ui/js/sample_codes/hello_world.js" みたいに。
             </li>
             <li>
-              日本語入力には対応していません。あしからず。
+              ファイル名に拡張子が正しく書かれていないと読み込めません。
+            </li>
+            <li>
+              日本語入力には対応していません。すみません。
             </li>
           </ul>
         </div>
