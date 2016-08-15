@@ -9,7 +9,7 @@ const DesctiptionSection = React.createClass({
         <div className='description-section-body'>
           <ul>
             <li>
-              スタートボタンで開始です。
+              写経するボタンで開始です。
             </li>
             <li>
               入力モードを「半角入力」にしてください。

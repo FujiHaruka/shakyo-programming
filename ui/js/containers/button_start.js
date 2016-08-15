@@ -19,7 +19,7 @@ let ButtonStart = React.createClass({
           )
         }
         onClick={this.onClick}>
-        スタート
+        写経する
       </span>
     )
   },

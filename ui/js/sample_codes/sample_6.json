@@ -1,0 +1,4 @@
+{
+  "text": "/**\n * Eternal Namuamidabutsu\n */\n\nlet count = 1\n\nwhile (true) {\n  console.log('Namuamidabutsu', count++)\n}\n",
+  "language": "js"
+}

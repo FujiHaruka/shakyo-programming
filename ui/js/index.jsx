@@ -7,7 +7,7 @@ import createLogger from 'redux-logger'
 import Reducer from './reducers'
 import {setThemeColor, setCode, gamePrepare} from './actions'
 
-import sampleCode from './sample_codes/sample_5.json'
+import sampleCode from './sample_codes/sample_6.json'
 
 const rootEl = document.getElementById('site')
 const logger = createLogger()
