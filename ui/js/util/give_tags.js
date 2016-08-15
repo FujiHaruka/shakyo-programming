@@ -3,7 +3,6 @@ const HTML = require('html-parse-stringify2')
 const Entities = require('html-entities').AllHtmlEntities
 const entities = new Entities()
 
-// TODO escape をどうするか
 /**
  * @param {object} code
  */
@@ -44,7 +43,15 @@ function giveTags (code) {
             return char
           } else {
             keyArray.push(' ')
-            return tag(char)
+            return tag(' ')
+          }
+        case '\t': // タブ文字はスペース2個に変換する
+        // TODO タブ文字はスペース2個でよいのか？
+          if (returnFlag) {
+            return '  '
+          } else {
+            keyArray.push(' ')
+            return tag('  ')
           }
         case '&': // 特殊文字開始
           returnFlag = false
