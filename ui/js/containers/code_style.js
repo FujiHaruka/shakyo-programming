@@ -126,7 +126,6 @@ let CodeStyle = React.createClass({
   },
 
   render () {
-    console.log('CodeStyle render')
     const s = this
     let {countTotal, playing} = s.props
     if (playing) {

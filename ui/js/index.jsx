@@ -10,16 +10,15 @@ import {setThemeColor, setCode, gamePrepare} from './actions'
 import sampleCode from './sample_codes/sample_6.json'
 
 const rootEl = document.getElementById('site')
-const logger = createLogger()
+// const logger = createLogger()
 
 let store = createStore(
-  Reducer,
-  applyMiddleware(logger)
+  Reducer
+  // applyMiddleware(logger)
 )
 let color = '#824'
 
 store.dispatch(setThemeColor('#824'))
-console.log(sampleCode)
 store.dispatch(setCode(sampleCode))
 store.dispatch(gamePrepare())
 

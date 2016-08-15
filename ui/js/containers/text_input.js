@@ -52,7 +52,6 @@ let TextInput = React.createClass({
   },
 
   onGameStart () {
-    console.log('Game Start')
     const s = this
     s._focus()
     document.addEventListener('click', s._focus)
