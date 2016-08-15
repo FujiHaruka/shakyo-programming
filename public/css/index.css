@@ -1,0 +1,159 @@
+#site {
+  height: 100%; }
+
+.app {
+  position: relative;
+  height: 100%; }
+
+pre {
+  white-space: pre-wrap; }
+
+.code-section {
+  position: relative;
+  margin: auto;
+  margin-bottom: 24px;
+  padding: 8px;
+  max-width: 800px; }
+
+.code-section-language {
+  font-size: 0.7em;
+  position: absolute;
+  right: 9px;
+  text-align: right;
+  margin: 0;
+  padding: 5px;
+  background: #eee;
+  border-left: 1px solid #bbb;
+  border-bottom: 1px solid #bbb; }
+
+.code-section-body {
+  margin-top: 6px;
+  font-size: 1.5em;
+  border: 1px solid #bbb;
+  padding: 0 16px; }
+
+.controller {
+  text-align: center;
+  width: 600px;
+  margin: auto; }
+
+.button {
+  border-width: 2px;
+  border-style: solid;
+  padding: 8px 12px;
+  font-size: 1.2em;
+  cursor: pointer; }
+
+.button:hover {
+  border-width: 3px; }
+
+.button:active {
+  font-weight: 700; }
+
+.button-disabled {
+  border: 2px solid #999;
+  color: #999;
+  padding: 6px 8px;
+  font-size: 1.2em;
+  cursor: default; }
+
+.text-input {
+  position: absolute;
+  left: -300px; }
+
+.game-info-card {
+  position: fixed;
+  z-index: 10;
+  background: white;
+  bottom: 30px;
+  right: 16px;
+  border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 12px;
+  box-shadow: 3px 4px 6px #aaa;
+  width: 140px; }
+  .game-info-card .title {
+    border-bottom: 1px solid #999;
+    text-align: center;
+    padding-top: 4px;
+    padding-bottom: 6px; }
+  .game-info-card table {
+    margin-top: 4px;
+    width: 100%; }
+  .game-info-card td {
+    padding: 4px 0; }
+  .game-info-card .right {
+    padding-left: 4px;
+    text-align: right; }
+
+.finish-window-background {
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100; }
+
+.finish-window {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -75px;
+  margin-left: -100px;
+  width: 200px;
+  height: 150px;
+  box-shadow: 8px 8px 15px 1px #666;
+  background: #fff;
+  border-radius: 6px;
+  text-align: center;
+  color: #666; }
+  .finish-window .finish-window-title {
+    border-bottom: 1px solid #999;
+    padding-bottom: 8px;
+    margin: 16px;
+    font-size: 1.4em; }
+  .finish-window .finish-window-time {
+    margin: 16px;
+    margin-bottom: 26px;
+    font-size: 1.2em; }
+
+.hidden {
+  visibility: hidden; }
+
+.visible {
+  visibility: visible; }
+
+.section {
+  margin: auto;
+  max-width: 600px;
+  padding: 8px; }
+
+.section-title {
+  border-bottom: 1px solid #999;
+  padding-bottom: 8px; }
+
+.description-section-body li {
+  margin: 10px 0;
+  line-height: 1.4em; }
+
+.import-url-form {
+  position: relative; }
+  .import-url-form .import-url-form-input-area {
+    font-size: 1.2em; }
+  .import-url-form .import-url-form-input {
+    height: 1em;
+    width: 70%;
+    border: 2px solid #ccc;
+    color: #666;
+    font-size: 1em; }
+  .import-url-form .button {
+    font-size: 1em;
+    float: right;
+    -webkit-transform: translateY(-5px);
+            transform: translateY(-5px); }
+
+.info-section-body {
+  margin-bottom: 50px; }
