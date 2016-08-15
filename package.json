@@ -35,6 +35,7 @@
     "highlight.js": "^9.5.0",
     "html-entities": "^1.2.0",
     "html-parse-stringify2": "^1.2.1",
+    "image-filter-colorize": "0.0.5",
     "json-loader": "^0.5.4",
     "keycode": "^2.1.4",
     "keycoder": "^1.1.1",

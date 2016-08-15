@@ -45,7 +45,7 @@ let HelloSection = React.createClass({
               {
                 hellos.map(({codeObject, name}) => {
                   return (
-                    <li style={{marginBottom: '30px'}}>
+                    <li style={{marginBottom: '30px'}} key={name}>
                       <span className='button app-theme-color' onClick={this.setCode(codeObject)}>
                         {name}
                       </span>
