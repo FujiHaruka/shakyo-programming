@@ -1,0 +1,4 @@
+{
+  "text": "#include <iostream>\n#include <cstdlib>\n\nint main()\n{\n\tstd::cout << \"Hello World\" << std::endl;\n\treturn EXIT_SUCCESS;\n}\n",
+  "language": "cpp"
+}

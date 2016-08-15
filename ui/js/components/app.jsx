@@ -9,6 +9,7 @@ import Controller from './controller'
 import DesctiptionSection from './description.js'
 import GameInfoCard from '../containers/game_info_card'
 import Header from './header'
+import HelloSection from '../containers/hello'
 import ImportSection from './import_section'
 import TextInput from '../containers/text_input'
 import FinishWindow from '../containers/finish_window'
@@ -25,6 +26,7 @@ const App = React.createClass({
         <Controller/>
         <DesctiptionSection/>
         <ImportSection/>
+        <HelloSection/>
         <GameInfoCard/>
         <FinishWindow/>
       </div>
